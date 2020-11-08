@@ -28,6 +28,10 @@ const routes = [
     path: '/hoomechef/menbresia',
     name: 'menbresia',
     component: () => import('../components/menbresia')
+  },{
+    path: '/hoomechef/menbresia/add',
+    name: 'dato-menbresia',
+    component: () => import('../components/dato-menbresia')
   },
   {
     path: '/homechef/recipe',

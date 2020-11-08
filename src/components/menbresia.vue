@@ -110,7 +110,11 @@
                     text
                     @click="reserve"
                 >
-                  Obtener
+
+                  <router-link to="/hoomechef/menbresia/add">
+                    <span class="mr-2">Obtener</span>
+                  </router-link>
+
                 </v-btn>
               </v-card-actions>
 
