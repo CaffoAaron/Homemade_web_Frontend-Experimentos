@@ -9,7 +9,7 @@
         >
           <v-img
               height="65"
-              src="https://scontent.flim18-2.fna.fbcdn.net/v/t1.0-1/p200x200/109269283_150877966608453_528725338939827879_o.jpg?_nc_cat=110&ccb=2&_nc_sid=7206a8&_nc_eui2=AeEEeXSbMsE0pnq-vvGw2SLhS85kQouizrBLzmRCi6LOsFkJCnZ1ANXxY9A93bE6fvU-CQxbcirsSnCGCcceVI7r&_nc_ohc=xnGJiWNTzGgAX9nqoXd&_nc_ht=scontent.flim18-2.fna&tp=6&oh=05913df711631b86591546a8ee09f963&oe=5FC89569"
+              src="https://scontent.flim18-1.fna.fbcdn.net/v/t1.0-9/107697646_1063570910706020_6049356131090790239_o.jpg?_nc_cat=102&ccb=2&_nc_sid=09cbfe&_nc_eui2=AeElQJo0XMR59x1fWdDj4MHVhBRN2sNJSP2EFE3aw0lI_QgZw6_XxVcq_ynfVGuQcPxodxUpVNBNu-4VqBBAXEEW&_nc_ohc=i-oqCeMNN1oAX--4BkU&_nc_ht=scontent.flim18-1.fna&oh=d57aed443b5f97a858f228b8fbf3de64&oe=5FCEF49A"
           ></v-img>
         </v-avatar>
         <v-toolbar-title class="text-h4">Homemade</v-toolbar-title>
