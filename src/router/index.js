@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -29,11 +30,11 @@ const routes = [
     name: 'menbresia',
     component: () => import('../components/menbresia')
   },
-  /*{
-    path: '/receta',
-    name: 'receta',
-    component: () => import('../components/receta')
-  },*/
+  {
+    path: '/hoomechef/menbresia/add',
+    name: 'dato-menbresia',
+    component: () => import('../components/dato-menbresia')
+  },
 ]
 
 const router = new VueRouter({
