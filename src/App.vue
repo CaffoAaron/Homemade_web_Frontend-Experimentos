@@ -39,7 +39,7 @@
             target="_blank"
             text
         >
-          <router-link to="/hoomechef/menbresia">
+          <router-link to="/homechef/recipe">
             <span class="mr-2">Mis Recetas</span>
           </router-link>
 
