@@ -29,6 +29,11 @@ const routes = [
     name: 'menbresia',
     component: () => import('../components/menbresia')
   },
+  /*{
+    path: '/receta',
+    name: 'receta',
+    component: () => import('../components/receta')
+  },*/
 ]
 
 const router = new VueRouter({
