@@ -37,6 +37,11 @@ const routes = [
     path: '/homechef/recipe',
     name: 'recipe',
     component: () => import('../components/recipe')
+  },
+  {
+    path: '/homechef/receta',
+    name: 'recipe',
+    component:()=>import('../components/receta')
   }
 ]
 
