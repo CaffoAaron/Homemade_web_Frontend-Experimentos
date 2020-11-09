@@ -2,12 +2,15 @@
   <v-timeline :dense="$vuetify.breakpoint.smAndDown">
     <br><br>
     <v-timeline-item color="purple lighten-2" fill-dot right>
+      <template v-slot:opposite>
+        <span><img src="https://cevicheweb.com/wp-content/uploads/2019/04/6.1-ceviche-de-pollo-2.jpg" height="200" width="300"></span>
+      </template>
       <v-card>
         <v-card-title class="purple lighten-2">
           <!--v-icon dark size="42" class="mr-4">
             mdi-magnify
           </v-icon-->
-          <h1 class="display-1 white--text font-weight-light">
+          <h1 class="display-1 white--text font-weight-bold">
             Ceviche con pollo:
           </h1>
         </v-card-title>
@@ -29,9 +32,12 @@
     <br><br>
 
     <v-timeline-item color="amber lighten-1" fill-dot left small>
+      <template v-slot:opposite>
+        <span><img src="https://t1.rg.ltmcdn.com/es/images/3/1/2/img_ceviche_de_pollo_58213_paso_0_600.jpg" height="350" width="500"></span>
+      </template>
       <v-card>
         <v-card-title class="amber lighten-1 justify-end">
-          <h1 class="display-1 mr-4 white--text font-weight-light">
+          <h1 class="display-1 mr-4 white--text font-weight-bold">
             Ingredientes:
           </h1>
           <!--v-icon dark size="42">
@@ -84,12 +90,16 @@
     <br><br>
 
     <v-timeline-item color="cyan lighten-1" fill-dot right>
+      <template v-slot:opposite>
+        <span><img src="https://t1.rg.ltmcdn.com/es/images/3/1/2/img_ceviche_de_pollo_58213_paso_2_600.jpg" height="350" width="500"><img
+            src="https://t2.rg.ltmcdn.com/es/images/3/1/2/img_ceviche_de_pollo_58213_paso_3_600.jpg" height="350" width="500"></span>
+      </template>
       <v-card>
         <v-card-title class="cyan lighten-1">
           <!--v-icon class="mr-4" dark size="42">
             mdi-email-outline
           </v-icon-->
-          <h1 class="display-1 white--text font-weight-light">
+          <h1 class="display-1 white--text font-weight-bold">
             Procedimiento
           </h1>
         </v-card-title>
@@ -121,9 +131,12 @@
     <br><br>
 
     <v-timeline-item color="red lighten-1" fill-dot left small>
+      <template v-slot:opposite>
+        <span><img src="https://ep01.epimg.net/elcomidista/imagenes/2019/02/27/articulo/1551270449_348999_1551277300_sumario_normal.jpg" height="350" width="500"><img src="https://t1.rg.ltmcdn.com/es/images/3/1/2/img_ceviche_de_pollo_58213_paso_6_600.jpg" height="350" width="500"></span>
+      </template>
       <v-card>
         <v-card-title class="red lighten-1 justify-end">
-          <h1 class="display-1 mr-4 white--text font-weight-light">
+          <h1 class="display-1 mr-4 white--text font-weight-bold">
             Consejos del chef:
           </h1>
           <!--v-icon dark size="42">
