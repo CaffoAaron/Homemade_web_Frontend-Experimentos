@@ -45,42 +45,54 @@
           </v-icon-->
         </v-card-title>
         <v-container>
-          <ul>
-            <li style="font-weight: 400;">
-              <span style="font-weight: 400;">Una pechuga grande de pollo (también puedes usar gallina).</span>
+          <ul id="ingred">
+            <li  style="font-weight: 400;">
+              <input type="checkbox">
+              <span style="font-weight: 400;"> Una pechuga grande de pollo (también puedes usar gallina).</span>
             </li>
             <li style="font-weight: 400;">
-              <span style="font-weight: 400;">Dos cebollas.</span>
+              <input type="checkbox">
+              <span style="font-weight: 400;"> Dos cebollas.</span>
             </li>
             <li style="font-weight: 400;">
-              <span style="font-weight: 400;">Cinco o seis limones.</span>
+              <input type="checkbox">
+              <span style="font-weight: 400;"> Cinco o seis limones.</span>
             </li>
             <li style="font-weight: 400;">
-              <span style="font-weight: 400;">Dos ajos.</span>
+              <input type="checkbox">
+              <span style="font-weight: 400;"> Dos ajos.</span>
             </li>
             <li style="font-weight: 400;">
-              <span style="font-weight: 400;">Cinco cucharadas de ají amarillo molido, también llamado ají escabeche.</span>
+              <input type="checkbox">
+              <span style="font-weight: 400;"> Cinco cucharadas de ají amarillo molido, también llamado ají escabeche.</span>
             </li>
             <li style="font-weight: 400;">
-              <span style="font-weight: 400;">Una cucharada de ají panca molido, aunque en Perú es habitual encontrarlo como ají colorado, especial o seco.</span>
+              <input type="checkbox">
+              <span style="font-weight: 400;"> Una cucharada de ají panca molido, aunque en Perú es habitual encontrarlo como ají colorado, especial o seco.</span>
             </li>
             <li style="font-weight: 400;">
-              <span style="font-weight: 400;">Medio ají amarillo.</span>
+              <input type="checkbox">
+              <span style="font-weight: 400;"> Medio ají amarillo.</span>
             </li>
             <li style="font-weight: 400;">
-              <span style="font-weight: 400;">Media taza de caldo de pollo, aunque si no tienes puedes usar agua en su lugar.</span>
+              <input type="checkbox">
+              <span style="font-weight: 400;"> Media taza de caldo de pollo, aunque si no tienes puedes usar agua en su lugar.</span>
             </li>
             <li style="font-weight: 400;">
-              <span style="font-weight: 400;">Una rama de cilantro o culantro.</span>
+              <input type="checkbox">
+              <span style="font-weight: 400;"> Una rama de cilantro o culantro.</span>
             </li>
             <li style="font-weight: 400;">
-              <span style="font-weight: 400;">Una cucharada de aceite vegetal.</span>
+              <input type="checkbox">
+              <span style="font-weight: 400;"> Una cucharada de aceite vegetal.</span>
             </li>
             <li style="font-weight: 400;">
-              <span style="font-weight: 400;">Sal y pimienta.</span>
+              <input type="checkbox">
+              <span style="font-weight: 400;"> Sal y pimienta.</span>
             </li>
             <li style="font-weight: 400;">
-              <span style="font-weight: 400;">Opcional: una hoja de lechuga y arroz blanco.</span>
+              <input type="checkbox">
+              <span style="font-weight: 400;"> Opcional: una hoja de lechuga y arroz blanco.</span>
             </li>
           </ul>
         </v-container>
@@ -176,5 +188,7 @@ export default {
 </script>
 
 <style scoped>
-
+#ingred li {
+  list-style: none;
+}
 </style>
