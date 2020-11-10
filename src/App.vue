@@ -1,56 +1,93 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+    <v-app-bar app color="orange" flat>
+      <v-container class="py-0 fill-height">
+          <router-link to="/">
+             <v-img
+                     src="https://scontent.flim18-1.fna.fbcdn.net/v/t1.0-9/107697646_1063570910706020_6049356131090790239_o.jpg?_nc_cat=102&ccb=2&_nc_sid=09cbfe&_nc_eui2=AeElQJo0XMR59x1fWdDj4MHVhBRN2sNJSP2EFE3aw0lI_QgZw6_XxVcq_ynfVGuQcPxodxUpVNBNu-4VqBBAXEEW&_nc_ohc=i-oqCeMNN1oAX--4BkU&_nc_ht=scontent.flim18-1.fna&oh=d57aed443b5f97a858f228b8fbf3de64&oe=5FCEF49A"
+                     class="rounded-circle mr-4"
+                     max-height="45"
+                     max-width="45"
+             ></v-img>
+           </router-link>
+        <v-toolbar-title class="text-h4">Homemade</v-toolbar-title>
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
+        <v-divider
+            class="mx-5"
+            vertical
+        ></v-divider>
 
-      <v-spacer></v-spacer>
+        <v-btn
+            depressed
+            rounded
+            href="https://github.com/vuetifyjs/vuetify/releases/latest"
+            target="_blank"
+            text>
+          <span class="mr-2">Buscar</span>
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+        </v-btn>
+        <v-divider
+            class="mx-5"
+            vertical
+        ></v-divider>
+
+        <v-btn
+            depressed
+            rounded
+            target="_blank"
+            text
+        >
+          <router-link to="/homechef/receta">
+            <span class="mr-2">Mis Recetas</span>
+          </router-link>
+
+        </v-btn>
+
+        <v-divider
+            class="mx-5"
+            vertical
+        ></v-divider>
+
+        <v-btn
+            depressed
+            rounded
+            target="_blank"
+            text
+        >
+          <router-link to="/hoomechef/menbresia">
+            <span class="mr-2">Menbresia</span>
+          </router-link>
+
+        </v-btn>
+
+        <v-spacer></v-spacer>
+
+        <v-responsive max-width="260">
+          <v-text-field
+              dense
+              flat
+              hide-details
+              rounded
+              solo-inverted
+          ></v-text-field>
+        </v-responsive>
+      </v-container>
     </v-app-bar>
 
     <v-main>
-      <HelloWorld/>
+      <router-view></router-view>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+
+
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
   },
 
   data: () => ({
