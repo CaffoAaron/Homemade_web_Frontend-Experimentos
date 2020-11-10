@@ -63,6 +63,13 @@
                 </v-card>
             </v-col>
         </v-row>
+        <v-col>
+            <v-btn class="green accent-2">
+                <router-link to="/">
+                    <span>Regresar a mi perfil</span>
+                </router-link>
+            </v-btn>
+        </v-col>
     </v-container>
 
 </template>

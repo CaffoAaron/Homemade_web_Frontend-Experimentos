@@ -61,6 +61,12 @@
               </v-card-actions>
             </v-card>
           </v-sheet>
+
+            <v-btn class="mt-10 ml-8 green accent-2">
+                <router-link to="/homechef/recipe/add">
+                    <span>Agregar una receta</span>
+                </router-link>
+            </v-btn>
         </v-col>
 
         <v-col>
@@ -73,7 +79,9 @@
                 <v-card-subtitle>{{ recipe.instructions }}</v-card-subtitle>
                 <v-card-actions>
                   <v-btn color="orange lighten-2" v-bind:href="recipe.url" text>
-                    Ver mas
+                      <router-link to="/homechef/recipe">
+                          <span>Ver Mas</span>
+                      </router-link>
                   </v-btn>
                 </v-card-actions>
               </v-card>
