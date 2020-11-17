@@ -60,6 +60,23 @@
 
         </v-btn>
 
+        <v-divider
+            class="mx-5"
+            vertical
+        ></v-divider>
+
+        <v-btn
+            depressed
+            rounded
+            target="_blank"
+            text
+        >
+          <router-link to="/register">
+            <span class="mr-2">Login</span>
+          </router-link>
+
+        </v-btn>
+
         <v-spacer></v-spacer>
 
         <v-responsive max-width="260">
