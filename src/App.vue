@@ -20,10 +20,11 @@
         <v-btn
             depressed
             rounded
-            href="https://github.com/vuetifyjs/vuetify/releases/latest"
             target="_blank"
             text>
-          <span class="mr-2">Buscar</span>
+          <router-link to="/homechef/search-receta">
+            <span class="mr-2">Buscar</span>
+          </router-link>
 
         </v-btn>
         <v-divider
