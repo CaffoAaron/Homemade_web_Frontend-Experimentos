@@ -2,13 +2,12 @@
   <v-layout row wrap align-center>
     <v-flex xs8 offset-md2>
       <v-text-field
-          v-model="search"
+          v-model="nameRecipe"
           append-icon="mdi-magnify"
           label="Search"
-          single-line
-          hide-details
       ></v-text-field>
-      <div v-for="recipe in recipes" :key="recipe.nameRecipe">
+      <v-btn color="red" append-icon="mdi-magnify" @click="search(nameRecipe)"> Buscar </v-btn>
+      <div  v-for="recipe in recipes" :key="recipe.nameRecipe" >
         <v-card class="my-0" >
           <v-img height="200px" src="https://www.delperu.org/wp-content/uploads/2020/01/papa-rellena-de-carne_800x533.jpg"></v-img>
           <v-card-title>{{ recipe.nameRecipe }}</v-card-title>
@@ -32,18 +31,36 @@ import axios from "axios";
 export default {
   name: "search-recipe",
   data: () => ({
-    search: '',
+    nameRecipe: '',
     recipes:[]
   }),
   created() {
-    axios.get('https://homemadeapi.azurewebsites.net/api/recipe')
-        .then(response =>{
-          this.recipes = response.data;
-          console.log(response.data);
-        })
-        .catch(e=>{
-          this.errors.push(e);
-        })
+    this.fetch();
+  },
+  methods: {
+    fetch(){
+      const params = {
+        name: this.nameRecipe
+      };
+      axios.get('https://homemadeapi.azurewebsites.net/api/recipe', {params})
+          .then(response =>{
+            this.recipes = response.data;
+            console.log(response.data);
+          })
+          .catch(e=>{
+            this.errors.push(e);
+          })
+    },
+    search(){
+      axios.get('https://homemadeapi.azurewebsites.net/api/userchef')
+          .then(response =>{
+            this.recipes = response.data;
+            console.log(response.data);
+          })
+          .catch(e=>{
+            this.errors.push(e);
+          })
+    }
   }
 }
 </script>
