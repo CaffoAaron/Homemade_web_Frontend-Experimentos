@@ -29,14 +29,15 @@
                         <div v-if="message">
                           {{message}}
                         </div>
+                        <v-card-actions>
+                          <v-btn class="mx-9" rounded color="orange accent-3" :disabled="loading" type="submit" onclick="handleLogin()">
+                            <v-progress-circular indeterminate color="orange accent-3"
+                                                 v-if="loading"></v-progress-circular>
+                            Iniciar Sesion</v-btn>
+                        </v-card-actions>
                       </v-form>
                     </v-card-text>
-                    <v-card-actions>
-                      <v-btn class="mx-9" rounded color="orange accent-3" :disabled="loading" type="submit" onclick="handleLogin()">
-                        <v-progress-circular indeterminate color="orange accent-3"
-                                             v-if="loading"></v-progress-circular>
-                        Iniciar Sesion</v-btn>
-                    </v-card-actions>
+
                   </v-col>
                   <v-col cols="11" md="4" class="orange accent-3">
                     <v-card-text class="black--text mt-12">
@@ -59,17 +60,17 @@
 import User from "@/models/user";
 
 export default {
-name: "login-form",
-  data(){
-    return{
-      user: new User('','','','12345','aaron_caffo@hotmail.com'),
+  name: "login",
+  data() {
+    return {
+      user: new User('', '', '', '12345', 'aaron_caffo@hotmail.com'),
       loading: false,
       message: '',
-      isValid:true
+      isValid: true
     };
   },
   computed: {
-    loggedIn(){
+    loggedIn() {
       return this.$store.state.auth.status.loggedIn;
     }
   },

@@ -1,3 +1,5 @@
+// auth.service.js
+// Authentication Service
 import axios from 'axios';
 
 const API_URL = 'https://localhost:44300/api/user/authenticate';
@@ -20,10 +22,10 @@ class AuthService {
     }
     register(user) {
         return axios.post(API_URL + 'sign-up', {
-            firstName: user.firstName,
-            lastName: user.lastName,
-            email: user.email,
-            password: user.password,
+            firstName: user.name,
+            lastName: user.lastname,
+            username: user.email,
+            password: user.password
         });
     }
 }
