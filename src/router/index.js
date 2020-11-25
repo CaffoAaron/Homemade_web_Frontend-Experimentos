@@ -44,19 +44,9 @@ const routes = [
     component: () => import('../components/create-recipe')
   },
   {
-    path: '/homechef/receta',
-    name: 'recipe',
-    component:()=>import('../components/receta')
-  },
-  {
-    path: '/login',
-    name: 'login-form',
-    component:()=>import('../components/login-form')
-  },
-  {
-    path: '/register',
-    name: 'register-form',
-    component:()=>import('../components/register-form')
+    path: '/homechef/search-receta',
+    name: 'search-recipe',
+    component:()=>import('../components/search-recipe')
   }
 ]
 
