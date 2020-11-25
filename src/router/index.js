@@ -47,6 +47,11 @@ const routes = [
     path: '/homechef/search-receta',
     name: 'search-recipe',
     component:()=>import('../components/search-recipe')
+  },
+  {
+    path: '/login',
+    name:'login-form',
+    component:()=>import('../components/login-form')
   }
 ]
 
