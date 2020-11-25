@@ -4,16 +4,14 @@
       <v-row align="center" justify="center">
         <v-col cols="12" sm="8" md="8">
           <v-card class="elevation-12">
-            <v-window v-model="step">
-              <v-window-item :value="1">
                 <v-row>
                   <v-col cols="12" md="8">
                     <v-card-title class="text-center display-2 orange--text text--accent-3 mx-6">Iniciar Sesion</v-card-title>
                     <v-card-text class="mt-12">
-                      <v-form v-model="isValid">
+                      <v-form @submit="handleLogin" v-model="isValid">
                         <v-text-field
                             label="Correo electronico"
-                            v-model="email"
+                            v-model="user.email"
                             :rules="[v => !!v || 'Se requiere correo electronico']"
                             required
                             prepend-icon="mdi-email"
@@ -22,16 +20,22 @@
                         <v-text-field
                             label="Contraseña"
                             prepend-icon="mdi-lock"
-                            v-model="password"
+                            v-model="user.password"
                             type="password"
                             :rules="[v => !!v || 'Se requiere contraseña']"
                             required
                         >
                         </v-text-field>
+                        <div v-if="message">
+                          {{message}}
+                        </div>
                       </v-form>
                     </v-card-text>
                     <v-card-actions>
-                      <v-btn class="mx-9" rounded color="orange accent-3" :disabled="!isValid">Iniciar Sesion</v-btn>
+                      <v-btn class="mx-9" rounded color="orange accent-3" :disabled="loading" type="submit" onclick="handleLogin()">
+                        <v-progress-circular indeterminate color="orange accent-3"
+                                             v-if="loading"></v-progress-circular>
+                        Iniciar Sesion</v-btn>
                     </v-card-actions>
                   </v-col>
                   <v-col cols="11" md="4" class="orange accent-3">
@@ -44,8 +48,6 @@
                     </v-card-text>
                   </v-col>
                 </v-row>
-              </v-window-item>
-            </v-window>
           </v-card>
         </v-col>
       </v-row>
@@ -54,13 +56,52 @@
 </template>
 
 <script>
+import User from "@/models/user";
+
 export default {
 name: "login-form",
   data(){
     return{
-      email: null,
-      password:null,
+      user: new User('','','','12345','aaron_caffo@hotmail.com'),
+      loading: false,
+      message: '',
       isValid:true
+    };
+  },
+  computed: {
+    loggedIn(){
+      return this.$store.state.auth.status.loggedIn;
+    }
+  },
+  created() {
+    if (this.loggedIn) {
+      this.$router.push('/hoomechef/menbresia');
+    }
+  },
+  methods: {
+    handleLogin() {
+      this.loading = true;
+      console.log('Starting Login handling');
+      if (!this.isValid) {
+        console.log('Invalid');
+        this.loading = false;
+        return;
+      }
+      if (this.user.email && this.user.password) {
+        this.$store.dispatch('auth/login', this.user).then(
+            (user) => {
+              console.log('Logged In');
+              console.log(user);
+              this.$router.push('/hoomechef/menbresia');
+            },
+            error => {
+              console.log('Error');
+              this.loading = false;
+              this.message = (error.response && error.response.data)
+                  || error.message || error.toString();
+            }
+        )
+      }
     }
   }
 }

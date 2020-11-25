@@ -71,7 +71,7 @@
             target="_blank"
             text
         >
-          <router-link to="/register">
+          <router-link to="/login">
             <span class="mr-2">Login</span>
           </router-link>
 
@@ -106,7 +106,17 @@ export default {
 
   components: {
   },
-
+  computed: {
+    currentUser() {
+      return this.$store.state.auth.user;
+    }
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('auth/logout');
+      this.$router.push('/login');
+    }
+  },
   data: () => ({
     //
   }),

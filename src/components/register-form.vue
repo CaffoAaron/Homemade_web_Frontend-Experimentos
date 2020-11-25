@@ -10,10 +10,10 @@
                   <v-col cols="12" md="8">
                     <v-card-title class="text-center display-2 orange--text text--accent-3 mx-6">Iniciar Sesion</v-card-title>
                     <v-card-text class="mt-12">
-                      <v-form v-model="isValid">
+                      <v-form v-model="isValid" @submit.prevent="handleRegister">
                         <v-text-field
                             label="Nombre"
-                            v-model="name"
+                            v-model="user.name"
                             :rules="[v => !!v || 'Se requiere nombre']"
                             required
                             prepend-icon="mdi-account"
@@ -21,7 +21,7 @@
                         </v-text-field>
                         <v-text-field
                             label="Apellido"
-                            v-model="lastname"
+                            v-model="user.lastName"
                             :rules="[v => !!v || 'Se requiere apellido']"
                             required
                             prepend-icon="mdi-account"
@@ -29,7 +29,7 @@
                         </v-text-field>
                         <v-text-field
                             label="Correo electronico"
-                            v-model="email"
+                            v-model="user.email"
                             :rules="emailRules"
                             required
                             prepend-icon="mdi-email"
@@ -37,7 +37,7 @@
                         </v-text-field>
                         <v-text-field
                             label="Contraseña"
-                            v-model="password"
+                            v-model="user.password"
                             type="password"
                             :rules="passwordRules"
                             required
@@ -46,7 +46,7 @@
                         </v-text-field>
                         <v-text-field
                             label=31-08-1999
-                            v-model="dateuser"
+                            v-model="user.date"
                             type="date"
                             :rules="dateRules"
                             error-count="2"
@@ -55,7 +55,7 @@
                         </v-text-field>
                         <v-text-field
                             label="Genero"
-                            v-model="gender"
+                            v-model="user.gender"
                             :rules="[v => !!v || 'Se requiere ingresar genero']"
                             required
                             prepend-icon="mdi-gender-male-female"
@@ -86,10 +86,16 @@
 </template>
 
 <script>
+import User from "@/models/user";
+
 export default {
 name: "register-form",
   data(){
     return{
+      user: new User('', '', '', '', '','','',),
+      submitted: false,
+      successful: false,
+      message: '',
       email:null,
       password:null,
       isValid:null,
@@ -107,6 +113,35 @@ name: "register-form",
       dateRules: [
         v => !!v || 'Fecha de nacimiento requerido',
       ],
+    }
+  },
+  computed: {
+    loggedIn() {
+      return this.$store.state.auth.status.loggedIn;
+    }
+  },
+  mounted() {
+    if (this.loggedIn) {
+      this.$router.push('/profile');
+    }
+  },
+  methods: {
+    handleRegister() {
+      this.message = '';
+      this.submitted = true;
+      if (this.isValid) {
+        this.$store.dispatch('auth/register', this.user).then(
+            data => {
+              this.message = data.message;
+              this.successful = true;
+            },
+            error => {
+              this.message = (error.response && error.response.data)
+                  || error.message || error.toString();
+              this.successful = false;
+            }
+        )
+      }
     }
   }
 }
