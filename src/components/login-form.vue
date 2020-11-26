@@ -67,7 +67,7 @@ export default {
   name: "login",
   data() {
     return {
-      user: new User('', '', '', '12345', 'aaron_caffo@hotmail.com'),
+      user: new User('', '', '', '12345', 'aaron_caffo@hotmail.com', ''),
       loading: false,
       message: '',
       isValid: true
