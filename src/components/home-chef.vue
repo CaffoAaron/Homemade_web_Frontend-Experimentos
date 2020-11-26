@@ -8,9 +8,8 @@
               <template slot="progress">
                 <v-progress-linear color="deep-purple" height="10" indeterminate></v-progress-linear>
               </template>
-              <v-img height="250"
-                     src="https://scontent.flim18-1.fna.fbcdn.net/v/t1.0-9/107697646_1063570910706020_6049356131090790239_o.jpg?_nc_cat=102&ccb=2&_nc_sid=09cbfe&_nc_eui2=AeElQJo0XMR59x1fWdDj4MHVhBRN2sNJSP2EFE3aw0lI_QgZw6_XxVcq_ynfVGuQcPxodxUpVNBNu-4VqBBAXEEW&_nc_ohc=i-oqCeMNN1oAX--4BkU&_nc_ht=scontent.flim18-1.fna&oh=d57aed443b5f97a858f228b8fbf3de64&oe=5FCEF49A"
-              ></v-img>
+              <v-img height="250" v-bind:src="currentUser.picture">
+              </v-img>
               <div v-for="user in users" :key="user.name">
                 <v-card-title>{{user.name + ' ' + user.lastname}}</v-card-title>
               </div>
@@ -74,7 +73,7 @@
 
             <div v-for="recipe in recipes" :key="recipe.nameRecipe">
               <v-card class="my-0" >
-                <v-img height="200px" src="https://www.delperu.org/wp-content/uploads/2020/01/papa-rellena-de-carne_800x533.jpg"></v-img>
+                <v-img height="200px" v-bind:src="recipe.img"></v-img>
                 <v-card-title>{{ recipe.nameRecipe }}</v-card-title>
                 <v-card-subtitle>{{ recipe.instructions }}</v-card-subtitle>
                 <v-card-actions>
@@ -101,6 +100,20 @@ import axios from 'axios'
 
 export default {
   name: "home-chef",
+  computed: {
+    currentUser() {
+      console.log(this.$store.state.auth.user);
+      return this.$store.state.auth.user;
+    },
+    currentUserFullName() {
+      return `${this.currentUser.firstName} ${this.currentUser.lastName}`;
+    }
+  },
+  mounted() {
+    if (!this.currentUser) {
+      this.$router.push('/login');
+    }
+  },
   data: () => ({
     drawer: false,
     recipes:[],
@@ -117,7 +130,7 @@ export default {
   },
 
   created() {
-    axios.get('https://homemade20201124161107.azurewebsites.net/api/recipe')
+    axios.get('https://homemade20201124161107.azurewebsites.net/api/recipe/id?id=' + this.currentUser.id)
         .then(response =>{
           this.recipes = response.data;
           console.log(response.data);
