@@ -10,22 +10,20 @@
               </template>
               <v-img height="250" v-bind:src="currentUser.picture">
               </v-img>
-              <div v-for="user in users" :key="user.name">
-                <v-card-title>{{user.name + ' ' + user.lastname}}</v-card-title>
-              </div>
+              <v-card-title>{{currentUser.name + ' ' + currentUser.lastname}}</v-card-title>
 
               <v-card-text>
                 <v-row align="center" class="mx-0">
                   <v-rating :value="4.5" color="amber" dense half-increments readonly size="14"></v-rating>
                   <div class="grey--text ml-4">
-                    4.5 (413)
+                    4.5 (4)
                   </div>
                 </v-row>
-                <div v-for="user in users" :key="user.name" class="my-4 subtitle-1">
-                  {{ 'Date: ' + user.date}}
+                <div>
+                  'Date: 2000-05-03T00:00:00'
                 </div>
-                <div v-for="user in users" :key="user.name" >
-                  {{ 'Email de contacto: ' + user.email}}
+                <div>
+                  {{ 'Email de contacto: ' + currentUser.email}}
                 </div>
               </v-card-text>
               <v-divider class="mx-4"></v-divider>
