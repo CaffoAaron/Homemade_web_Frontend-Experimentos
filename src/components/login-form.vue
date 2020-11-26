@@ -80,7 +80,7 @@ export default {
   },
   created() {
     if (this.loggedIn) {
-      this.$router.push('/hoomechef/menbresia');
+      this.$router.push('/');
     }
   },
   methods: {
@@ -97,7 +97,7 @@ export default {
             (user) => {
               console.log('Logged In');
               console.log(user);
-              this.$router.push('/hoomechef/menbresia');
+              this.$router.push('/');
             },
             error => {
               console.log('Error');

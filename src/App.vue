@@ -27,44 +27,76 @@
           </router-link>
 
         </v-btn>
+
+
+        <div v-if="currentUser">
+
+          <v-divider
+              class="mx-5"
+              vertical
+          ></v-divider>
+
+          <v-btn
+              depressed
+              rounded
+              target="_blank"
+              text
+          >
+            <router-link to="/homechef/receta">
+              <span class="mr-2">Mis Recetas</span>
+            </router-link>
+
+          </v-btn>
+        </div>
+
+
+        <div v-if="currentUser">
+
+          <v-divider
+              class="mx-5"
+              vertical
+          ></v-divider>
+
+          <v-btn
+              depressed
+              rounded
+              target="_blank"
+              text
+          >
+            <router-link to="/hoomechef/menbresia">
+              <span class="mr-2">Menbresia</span>
+            </router-link>
+
+          </v-btn>
+
+        </div>
+
+        <div v-if="currentUser">
+
+          <v-divider
+              class="mx-5"
+              vertical
+          ></v-divider>
+
+          <v-btn
+              depressed
+              rounded
+              target="_blank"
+              text
+          >
+            <router-link to="/">
+              <span class="mr-2">Perfil</span>
+            </router-link>
+
+          </v-btn>
+
+        </div>
+
         <v-divider
             class="mx-5"
             vertical
         ></v-divider>
 
-        <v-btn
-            depressed
-            rounded
-            target="_blank"
-            text
-        >
-          <router-link to="/homechef/receta">
-            <span class="mr-2">Mis Recetas</span>
-          </router-link>
-
-        </v-btn>
-
-        <v-divider
-            class="mx-5"
-            vertical
-        ></v-divider>
-
-        <v-btn
-            depressed
-            rounded
-            target="_blank"
-            text
-        >
-          <router-link to="/hoomechef/menbresia">
-            <span class="mr-2">Menbresia</span>
-          </router-link>
-
-        </v-btn>
-
-        <v-divider
-            class="mx-5"
-            vertical
-        ></v-divider>
 
         <div v-if="currentUser">
           <v-btn
@@ -80,8 +112,11 @@
               depressed
               rounded
               target="_blank"
-              text to="/login"
-          >Iniciar Sesion
+          >
+            <router-link to="/login">
+              <span class="mr-2">Iniciar Sesion</span>
+            </router-link>
+
           </v-btn>
         </div>
 
