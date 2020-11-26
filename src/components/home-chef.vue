@@ -20,7 +20,7 @@
                   </div>
                 </v-row>
                 <div>
-                  'Date: 2000-05-03T00:00:00'
+                  'Date: 2020-05-03T00:00:00'
                 </div>
                 <div>
                   {{ 'Email de contacto: ' + currentUser.email}}
@@ -67,24 +67,34 @@
         </v-col>
 
         <v-col>
-          <v-sheet min-height="70vh" rounded="lg">
-
-            <div v-for="recipe in recipes" :key="recipe.nameRecipe">
-              <v-card class="my-0" >
-                <v-img height="200px" v-bind:src="recipe.img"></v-img>
-                <v-card-title>{{ recipe.nameRecipe }}</v-card-title>
-                <v-card-subtitle>{{ recipe.instructions }}</v-card-subtitle>
-                <v-card-actions>
-                  <v-btn color="orange lighten-2" v-bind:href="recipe.url" text>
+          <div v-if="recipes.length === 0">
+            <v-img height="200px" src="https://thumbs.dreamstime.com/b/haga-frente-la-expresi%C3%B3n-del-%C3%A2%E2%82%AC-hombre-cocinero-triste-cansada-109384473.jpg"></v-img>
+            <h2> No cuentas con ninguna receta creada :-(</h2>
+            <h2> No esperece mas y crea una receta</h2>
+          </div>
+          <div v-else>
+            <v-sheet min-height="70vh" rounded="lg">
+              <div v-for="recipe in recipes" :key="recipe.nameRecipe" >
+                <v-card class="my-0" >
+                  <v-img height="200px" v-bind:src="recipe.img" ></v-img>
+                  <v-card-title>{{ recipe.nameRecipe }}</v-card-title>
+                  <v-card-subtitle>{{ recipe.instructions }}</v-card-subtitle>
+                  <v-card-actions>
+                    <v-btn color="orange lighten-2" v-bind:href="recipe.url" text>
                       <router-link to="/homechef/recipe">
-                          <span>Ver Mas</span>
+                        <span>Ver Mas</span>
                       </router-link>
-                  </v-btn>
-                </v-card-actions>
-              </v-card>
-            </div>
+                    </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </div>
 
-          </v-sheet>
+
+
+
+            </v-sheet>
+          </div>
+
         </v-col>
       </v-row>
     </v-container>
@@ -114,7 +124,8 @@ export default {
   },
   data: () => ({
     drawer: false,
-    recipes:[],
+    recipes:null,
+    empty: true,
     users:[],
     errors: [],
     loading: false,
