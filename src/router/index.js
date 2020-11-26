@@ -15,7 +15,7 @@ const routes = [
     component: () => import('../views/About.vue')
   },
   {
-    path: '/perfil/:id',
+    path: '/perfil',
     name: 'perfil-chef',
     component: () => import('../components/perfil-chef')
   },
@@ -51,6 +51,16 @@ const routes = [
     path: '/homechef/search-receta',
     name: 'search-recipe',
     component:()=>import('../components/search-recipe')
+  },
+  {
+    path: '/login',
+    name:'login-form',
+    component: () =>import('../components/login-form')
+  },
+  {
+    path: '/register',
+    name: 'register-form',
+    component: () =>import('../components/register-form')
   }
 ]
 

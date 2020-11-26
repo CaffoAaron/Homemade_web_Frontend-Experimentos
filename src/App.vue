@@ -27,56 +27,98 @@
           </router-link>
 
         </v-btn>
+
+
+        <div v-if="currentUser">
+
+          <v-divider
+              class="mx-5"
+              vertical
+          ></v-divider>
+
+          <v-btn
+              depressed
+              rounded
+              target="_blank"
+              text
+          >
+            <router-link to="/perfil">
+              <span class="mr-2">Mis Recetas</span>
+            </router-link>
+
+          </v-btn>
+        </div>
+
+
+        <div v-if="currentUser">
+
+          <v-divider
+              class="mx-5"
+              vertical
+          ></v-divider>
+
+          <v-btn
+              depressed
+              rounded
+              target="_blank"
+              text
+          >
+            <router-link to="/hoomechef/menbresia">
+              <span class="mr-2">Menbresia</span>
+            </router-link>
+
+          </v-btn>
+
+        </div>
+
+        <div v-if="currentUser">
+
+          <v-divider
+              class="mx-5"
+              vertical
+          ></v-divider>
+
+          <v-btn
+              depressed
+              rounded
+              target="_blank"
+              text
+          >
+            <router-link to="/">
+              <span class="mr-2">Perfil</span>
+            </router-link>
+
+          </v-btn>
+
+        </div>
+
         <v-divider
             class="mx-5"
             vertical
         ></v-divider>
 
-        <v-btn
-            depressed
-            rounded
-            target="_blank"
-            text
-        >
-          <router-link to="/homechef/receta">
-            <span class="mr-2">Mis Recetas</span>
-          </router-link>
 
-        </v-btn>
+        <div v-if="currentUser">
+          <v-btn
+              depressed
+              rounded
+              target="_blank"
+              text @click.prevent="logout"
+          >Cerrar Sesion
+          </v-btn>
+        </div>
+        <div v-else>
+          <v-btn
+              depressed
+              rounded
+              target="_blank"
+          >
+            <router-link to="/login">
+              <span class="mr-2">Iniciar Sesion</span>
+            </router-link>
 
-        <v-divider
-            class="mx-5"
-            vertical
-        ></v-divider>
-
-        <v-btn
-            depressed
-            rounded
-            target="_blank"
-            text
-        >
-          <router-link to="/hoomechef/menbresia">
-            <span class="mr-2">Menbresia</span>
-          </router-link>
-
-        </v-btn>
-
-        <v-divider
-            class="mx-5"
-            vertical
-        ></v-divider>
-
-        <v-btn
-            depressed
-            rounded
-            target="_blank"
-            text
-        >
-          <router-link to="/register">
-            <span class="mr-2">Login</span>
-          </router-link>
-
-        </v-btn>
+          </v-btn>
+        </div>
 
         <v-spacer></v-spacer>
 
@@ -99,7 +141,17 @@ export default {
 
   components: {
   },
-
+  computed: {
+    currentUser() {
+      return this.$store.state.auth.user;
+    }
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('auth/logout');
+      this.$router.push('/login');
+    }
+  },
   data: () => ({
     //
   }),
