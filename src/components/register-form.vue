@@ -4,8 +4,6 @@
       <v-row align="center" justify="center">
         <v-col cols="12" sm="8" md="8">
           <v-card class="elevation-12">
-            <v-window v-model="step">
-              <v-window-item :value="1">
                 <v-row>
                   <v-col cols="12" md="8">
                     <v-card-title class="text-center display-2 orange--text text--accent-3 mx-6">Iniciar Sesion</v-card-title>
@@ -71,13 +69,15 @@
                       <h1 class="text-center display-1">Bienvenido a Homemade</h1>
                       <h5 class="text-center">Si ya tiene una cuenta, inicie sesion</h5>
                       <v-card-actions>
-                        <v-btn class="mx-13" rounded outlined="" dark>Iniciar Sesion</v-btn>
+                        <v-btn class="mx-13" rounded outlined="" dark>
+                          <router-link to="/login">
+                            Iniciar Sesion
+                          </router-link>
+                        </v-btn>
                       </v-card-actions>
                     </v-card-text>
                   </v-col>
                 </v-row>
-              </v-window-item>
-            </v-window>
           </v-card>
         </v-col>
       </v-row>
@@ -92,7 +92,7 @@ export default {
 name: "register-form",
   data(){
     return{
-      user: new User('', '', '', '', '','','',),
+      user: new User('', '', '', '', ''),
       submitted: false,
       successful: false,
       message: '',
@@ -122,7 +122,7 @@ name: "register-form",
   },
   mounted() {
     if (this.loggedIn) {
-      this.$router.push('/profile');
+      this.$router.push('/hoomechef/menbresia');
     }
   },
   methods: {

@@ -51,7 +51,12 @@ const routes = [
   {
     path: '/login',
     name:'login-form',
-    component:()=>import('../components/login-form')
+    component: () =>import('../components/login-form')
+  },
+  {
+    path: '/register',
+    name: 'register-form',
+    component: () =>import('../components/register-form')
   }
 ]
 

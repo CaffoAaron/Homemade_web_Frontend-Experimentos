@@ -44,7 +44,11 @@
                       <h1 class="text-center display-1">Bienvenido a Homemade</h1>
                       <h5 class="text-center">Ingrese sus datos personales y comience a viajar con nosotros</h5>
                       <v-card-actions>
-                        <v-btn class="mx-13" rounded outlined="" dark>Registrarse</v-btn>
+                        <v-btn class="mx-13" rounded outlined="" dark>
+                          <router-link to="/register">
+                            Registrarse
+                          </router-link>
+                          </v-btn>
                       </v-card-actions>
                     </v-card-text>
                   </v-col>

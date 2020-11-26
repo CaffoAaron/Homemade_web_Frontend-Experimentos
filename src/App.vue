@@ -66,17 +66,24 @@
             vertical
         ></v-divider>
 
-        <v-btn
-            depressed
-            rounded
-            target="_blank"
-            text
-        >
-          <router-link to="/login">
-            <span class="mr-2">Login</span>
-          </router-link>
-
-        </v-btn>
+        <div v-if="currentUser">
+          <v-btn
+              depressed
+              rounded
+              target="_blank"
+              text @click.prevent="logout"
+          >Cerrar Sesion
+          </v-btn>
+        </div>
+        <div v-else>
+          <v-btn
+              depressed
+              rounded
+              target="_blank"
+              text to="/login"
+          >Iniciar Sesion
+          </v-btn>
+        </div>
 
         <v-spacer></v-spacer>
 
