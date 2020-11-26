@@ -8,10 +8,9 @@
               <template slot="progress">
                 <v-progress-linear color="deep-purple" height="10" indeterminate></v-progress-linear>
               </template>
-              <v-img height="250"
-                     src="https://scontent.flim18-1.fna.fbcdn.net/v/t1.0-9/107697646_1063570910706020_6049356131090790239_o.jpg?_nc_cat=102&ccb=2&_nc_sid=09cbfe&_nc_eui2=AeElQJo0XMR59x1fWdDj4MHVhBRN2sNJSP2EFE3aw0lI_QgZw6_XxVcq_ynfVGuQcPxodxUpVNBNu-4VqBBAXEEW&_nc_ohc=i-oqCeMNN1oAX--4BkU&_nc_ht=scontent.flim18-1.fna&oh=d57aed443b5f97a858f228b8fbf3de64&oe=5FCEF49A"
+              <v-img height="250" v-bind:href="currentUser.picture"
               ></v-img>
-              <v-card-title>{{currentUser.name + ' ' + currentUser.lastname}}</v-card-title>
+              <v-card-title>{{currentUser.name + ' ' + currentUser.lastname + currentUser.picture}}</v-card-title>
               <v-card-text>
                 <v-row align="center" class="mx-0">
                   <v-rating :value="4.5" color="amber" dense half-increments readonly size="14"></v-rating>

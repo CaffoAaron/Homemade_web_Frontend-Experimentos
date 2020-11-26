@@ -25,7 +25,8 @@ class AuthService {
             firstName: user.name,
             lastName: user.lastname,
             username: user.email,
-            password: user.password
+            password: user.password,
+            picture: user.picture
         });
     }
 }
