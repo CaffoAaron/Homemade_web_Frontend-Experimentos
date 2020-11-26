@@ -9,7 +9,7 @@
       <v-btn color="red" append-icon="mdi-magnify" @click="search(nameRecipe)"> Buscar </v-btn>
       <div  v-for="recipe in recipes" :key="recipe.nameRecipe" >
         <v-card class="my-0" >
-          <v-img height="200px" src="https://www.delperu.org/wp-content/uploads/2020/01/papa-rellena-de-carne_800x533.jpg"></v-img>
+          <v-img height="200px" v-bind:src="recipe.img"></v-img>
           <v-card-title>{{ recipe.nameRecipe }}</v-card-title>
           <v-card-subtitle>{{ recipe.instructions }}</v-card-subtitle>
           <v-card-actions>
