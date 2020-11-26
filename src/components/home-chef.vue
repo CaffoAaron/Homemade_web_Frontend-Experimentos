@@ -11,10 +11,7 @@
               <v-img height="250"
                      src="https://scontent.flim18-1.fna.fbcdn.net/v/t1.0-9/107697646_1063570910706020_6049356131090790239_o.jpg?_nc_cat=102&ccb=2&_nc_sid=09cbfe&_nc_eui2=AeElQJo0XMR59x1fWdDj4MHVhBRN2sNJSP2EFE3aw0lI_QgZw6_XxVcq_ynfVGuQcPxodxUpVNBNu-4VqBBAXEEW&_nc_ohc=i-oqCeMNN1oAX--4BkU&_nc_ht=scontent.flim18-1.fna&oh=d57aed443b5f97a858f228b8fbf3de64&oe=5FCEF49A"
               ></v-img>
-              <div v-for="user in users" :key="user.name">
-                <v-card-title>{{user.name + ' ' + user.lastname}}</v-card-title>
-              </div>
-
+              <v-card-title>{{currentUser.name + ' ' + currentUser.lastname}}</v-card-title>
               <v-card-text>
                 <v-row align="center" class="mx-0">
                   <v-rating :value="4.5" color="amber" dense half-increments readonly size="14"></v-rating>
@@ -22,11 +19,11 @@
                     4.5 (413)
                   </div>
                 </v-row>
-                <div v-for="user in users" :key="user.name" class="my-4 subtitle-1">
-                  {{ 'Date: ' + user.date}}
+                <div>
+                  'Date: 31-03-2000'
                 </div>
-                <div v-for="user in users" :key="user.name" >
-                  {{ 'Email de contacto: ' + user.email}}
+                <div>
+                  {{ 'Email de contacto: ' + currentUser.email}}
                 </div>
               </v-card-text>
               <v-divider class="mx-4"></v-divider>
@@ -101,6 +98,20 @@ import axios from 'axios'
 
 export default {
   name: "home-chef",
+  computed: {
+    currentUser() {
+      console.log(this.$store.state.auth.user);
+      return this.$store.state.auth.user;
+    },
+    currentUserFullName() {
+      return `${this.currentUser.firstName} ${this.currentUser.lastName}`;
+    }
+  },
+  mounted() {
+    if (!this.currentUser) {
+      this.$router.push('/login');
+    }
+  },
   data: () => ({
     drawer: false,
     recipes:[],
@@ -117,7 +128,7 @@ export default {
   },
 
   created() {
-    axios.get('https://homemadeapi.azurewebsites.net/api/recipe')
+    axios.get('https://localhost:44300/api/recipe/id?id='+ this.currentUser.id)
         .then(response =>{
           this.recipes = response.data;
           console.log(response.data);
