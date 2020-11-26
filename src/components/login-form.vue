@@ -1,5 +1,5 @@
 <template>
-  <v-content>
+  <v-main>
     <v-container class="fill-height" fluid>
       <v-row align="center" justify="center">
         <v-col cols="12" sm="8" md="8">
@@ -22,6 +22,7 @@
                             prepend-icon="mdi-lock"
                             v-model="user.password"
                             type="password"
+                            autocomplete="off"
                             :rules="[v => !!v || 'Se requiere contraseña']"
                             required
                         >
@@ -30,7 +31,7 @@
                           {{message}}
                         </div>
                         <v-card-actions>
-                          <v-btn class="mx-9" rounded color="orange accent-3" :disabled="loading" type="submit" onclick="handleLogin()">
+                          <v-btn class="mx-9" rounded color="orange accent-3" :disabled="loading" type="submit" >
                             <v-progress-circular indeterminate color="orange accent-3"
                                                  v-if="loading"></v-progress-circular>
                             Iniciar Sesion</v-btn>
@@ -57,7 +58,7 @@
         </v-col>
       </v-row>
     </v-container>
-  </v-content>
+  </v-main>
 </template>
 
 <script>
@@ -67,7 +68,7 @@ export default {
   name: "login",
   data() {
     return {
-      user: new User('', '', '', '12345', 'aaron_caffo@hotmail.com', ''),
+      user: new User('', '', '', '', '', ''),
       loading: false,
       message: '',
       isValid: true
@@ -84,7 +85,7 @@ export default {
     }
   },
   methods: {
-    handleLogin() {
+    handleLogin: function () {
       this.loading = true;
       console.log('Starting Login handling');
       if (!this.isValid) {
