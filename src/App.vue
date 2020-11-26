@@ -42,7 +42,7 @@
               target="_blank"
               text
           >
-            <router-link to="/homechef/receta">
+            <router-link to="/perfil">
               <span class="mr-2">Mis Recetas</span>
             </router-link>
 

@@ -15,7 +15,7 @@ const routes = [
     component: () => import('../views/About.vue')
   },
   {
-    path: '/perfil/:id',
+    path: '/perfil',
     name: 'perfil-chef',
     component: () => import('../components/perfil-chef')
   },
