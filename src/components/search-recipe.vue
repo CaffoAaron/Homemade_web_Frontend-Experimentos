@@ -7,20 +7,30 @@
           label="Search"
       ></v-text-field>
       <v-btn color="red" append-icon="mdi-magnify" @click="search(nameRecipe)"> Buscar </v-btn>
-      <div  v-for="recipe in recipes" :key="recipe.nameRecipe" >
-        <v-card class="my-0" >
-          <v-img height="200px" v-bind:src="recipe.img"></v-img>
-          <v-card-title>{{ recipe.nameRecipe }}</v-card-title>
-          <v-card-subtitle>{{ recipe.instructions }}</v-card-subtitle>
-          <v-card-actions>
-            <v-btn color="orange lighten-2" v-bind:href="recipe.url" text>
-              <router-link to="/homechef/recipe">
-                <span>Ver Mas</span>
-              </router-link>
-            </v-btn>
-          </v-card-actions>
-        </v-card>
+      <div v-if="recipes.length === 0">
+        <v-img height="200px" src="https://doctorazuluaga.com/wp-content/uploads/2019/01/adelgazar-comer-triste.png"></v-img>
+        <h2> No se encontró ninguna receta con ese nombre :-( </h2>
       </div>
+      <div v-else>
+        <div  v-for="recipe in recipes" :key="recipe.nameRecipe" >
+          <v-card class="my-0" >
+            <v-img height="200px" v-bind:src="recipe.img"></v-img>
+            <v-card-title>{{ recipe.nameRecipe }}</v-card-title>
+            <v-card-subtitle>{{ recipe.instructions }}</v-card-subtitle>
+            <v-card-actions>
+              <v-btn color="orange lighten-2" v-bind:href="recipe.url" text>
+                <router-link to="/homechef/recipe">
+                  <span>Ver Mas</span>
+                </router-link>
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </div>
+      </div>
+
+
+
+
     </v-flex>
   </v-layout>
 </template>

@@ -11,7 +11,6 @@
               <v-img height="250" v-bind:src="currentUser.picture">
               </v-img>
               <v-card-title>{{currentUser.name + ' ' + currentUser.lastname}}</v-card-title>
-
               <v-card-text>
                 <v-row align="center" class="mx-0">
                   <v-rating :value="4.5" color="amber" dense half-increments readonly size="14"></v-rating>
@@ -88,10 +87,6 @@
                   </v-card-actions>
                 </v-card>
               </div>
-
-
-
-
             </v-sheet>
           </div>
 
