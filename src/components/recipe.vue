@@ -1,71 +1,86 @@
 <template>
-    <v-main class="grey lighten-3">
-        <v-container>
+    <v-main class="grey lighten-2">
+        <v-container class="grey lighten-3">
+            <v-img height="200px" src="https://www.delperu.org/wp-content/uploads/2020/01/papa-rellena-de-carne_800x533.jpg"></v-img>
             <v-row>
-                <v-col>
+                <v-col cols>
                     <v-row class="mb-10">
-                        <h1>{{recipes[0].nameRecipe}}</h1>
+                        <v-col>
+                            <h1>{{recipes[0].nameRecipe}}</h1>
+                        </v-col>
+                        <v-col cols="2">
+                            <v-btn color="green accent-2" @click="assignRecipe()">
+                                <router-link to="/homechef/menu">
+                                    <span>Agregar a mi Menu</span>
+                                </router-link>
+                            </v-btn>
+                        </v-col>
                     </v-row>
                     <v-row></v-row>
-                    <h2>Ingredientes:</h2>
-                    <v-col cols="2" class="mb-10">
-                        <v-simple-table dense class="blue-grey lighten-4">
-                            <template v-slot:default>
-                                <thead>
-                                <tr>
-                                    <th class="text-left">
-                                        Nombre
-                                    </th>
-                                    <th class="text-left">
-                                        Cantidad
-                                    </th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr
-                                        v-for="item in ingredients"
-                                        :key="item.name"
-                                >
-                                    <td>{{ item.name }}</td>
-                                    <td>{{ item.quantity }}</td>
-                                </tr>
-                                </tbody>
-                            </template>
-                        </v-simple-table>
-                    </v-col>
-                    <h2 class="text-lg-center">Como prepararlo:</h2>
                     <v-row>
-                        <v-col cols="2"></v-col>
-                        <v-col>
-                            <v-timeline
-                                    align-top
-                                    :dense="$vuetify.breakpoint.smAndDown"
-                            >
-                                <v-timeline-item
-                                        v-for="(step, i) in recipeSteps"
-                                        :key="i"
-                                        :color="color1"
-                                        :icon="icon"
-                                        :icon-color="iconColor"
-
-                                        fill-dot
-                                >
-                                    <v-card
-                                            :color="color2"
-                                            dark
-                                    >
-                                        <v-card-title class="black--text">
-                                            Paso #{{i+1}}
-                                        </v-card-title>
-                                        <v-card-text class="white text--primary">
-                                            <p>{{step.instructions}}</p>
-                                        </v-card-text>
-                                    </v-card>
-                                </v-timeline-item>
-                            </v-timeline>
+                        <v-col cols="2" class="ml-8">
+                            <h2>Ingredientes:</h2>
+                                <v-simple-table dense class="blue-grey lighten-4">
+                                    <template v-slot:default>
+                                        <thead>
+                                        <tr>
+                                            <th class="text-left">
+                                                Nombre
+                                            </th>
+                                            <th class="text-left">
+                                                Cantidad
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr
+                                                v-for="item in ingredients"
+                                                :key="item.name"
+                                        >
+                                            <td>{{ item.name }}</td>
+                                            <td>{{ item.quantity }}</td>
+                                        </tr>
+                                        </tbody>
+                                    </template>
+                                </v-simple-table>
                         </v-col>
-                        <v-col cols="2"></v-col>
+                        <v-col cols="1"></v-col>
+                        <v-col>
+                            <h2 class="text-lg-center">Como prepararlo:</h2>
+                            <v-row>
+                                <v-col>
+                                    <v-timeline
+                                            align-top
+                                            :dense="$vuetify.breakpoint.smAndDown"
+                                    >
+                                        <v-timeline-item
+                                                v-for="(step, i) in recipeSteps"
+                                                :key="i"
+                                                :color="color1"
+                                                :icon="icon"
+                                                :icon-color="iconColor"
+
+                                                fill-dot
+                                        >
+                                            <v-card
+                                                    :color="color2"
+                                                    dark
+                                            >
+                                                <v-card-title class="black--text">
+                                                    Paso #{{i+1}}
+                                                </v-card-title>
+                                                <v-card-text class="white text--primary">
+                                                    <p>{{step.instructions}}</p>
+                                                </v-card-text>
+                                            </v-card>
+                                        </v-timeline-item>
+                                    </v-timeline>
+                                </v-col>
+                                <v-col cols="2"></v-col>
+                            </v-row>
+                        </v-col>
                     </v-row>
+
                 </v-col>
                 <v-col cols="2">
                     <v-sheet rounded="lg">
@@ -135,6 +150,8 @@
             users: [],
             loading: false,
             selection: 1,
+            menuId: 1,
+            recipeId: 1,
             color1: 'green accent-2',
             color2: 'light-green accent-2',
             icon: 'mdi-book-variant',
@@ -146,10 +163,15 @@
                 this.loading = true
                 setTimeout(() => (this.loading = false), 2000)
             },
+            assignRecipe(menuId, recipeId) {
+                axios.post('https://homemade20201124161107.azurewebsites.net/api/menurecipe/'+menuId+'/'+recipeId, {}).catch(e=> {
+                    this.errors.push(e);
+                });
+            }
         },
 
         created() {
-            axios.get('https://homemadeapi.azurewebsites.net/api/recipesteps/recipeid?recipeId=1')
+            axios.get('https://homemade20201124161107.azurewebsites.net/api/recipesteps/recipeid?recipeId=1')
                 .then(response =>{
                     this.recipeSteps = response.data;
                     console.log('data: ');
@@ -158,7 +180,7 @@
                 .catch(e=>{
                     this.errors.push(e);
                 })
-            axios.get('https://homemadeapi.azurewebsites.net/api/recipe')
+            axios.get('https://homemade20201124161107.azurewebsites.net/api/recipe')
             .then(response =>{
                 this.recipes = response.data;
                 console.log('data: ');
@@ -167,7 +189,7 @@
             .catch(e=>{
                 this.errors.push(e);
             })
-            axios.get('https://homemadeapi.azurewebsites.net/api/ingredient')
+            axios.get('https://homemade20201124161107.azurewebsites.net/api/ingredient')
                 .then(response =>{
                     this.ingredients = response.data;
                     console.log('data: ');
@@ -176,7 +198,7 @@
                 .catch(e=>{
                     this.errors.push(e);
                 })
-            axios.get('https://homemadeapi.azurewebsites.net/api/userchef')
+            axios.get('https://homemade20201124161107.azurewebsites.net/api/userchef')
                 .then(response =>{
                     this.users = response.data;
                     console.log(response.data);

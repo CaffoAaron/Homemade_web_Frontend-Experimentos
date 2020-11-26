@@ -23,6 +23,10 @@ const routes = [
     path: '/hoomechef/edit',
     name: 'edit-perfil',
     component: () => import('../components/edit-perfil')
+  },{
+    path: '/homechef/menu',
+    name: 'menu',
+    component: () => import('../components/menu')
   },
   {
     path: '/hoomechef/menbresia',

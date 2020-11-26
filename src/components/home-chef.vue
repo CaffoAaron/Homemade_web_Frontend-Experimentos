@@ -117,7 +117,7 @@ export default {
   },
 
   created() {
-    axios.get('https://homemadeapi.azurewebsites.net/api/recipe')
+    axios.get('https://homemade20201124161107.azurewebsites.net/api/recipe')
         .then(response =>{
           this.recipes = response.data;
           console.log(response.data);
@@ -125,7 +125,7 @@ export default {
         .catch(e=>{
           this.errors.push(e);
         })
-    axios.get('https://homemadeapi.azurewebsites.net/api/userchef')
+    axios.get('https://homemade20201124161107.azurewebsites.net/api/userchef')
         .then(response =>{
           this.users = response.data;
           console.log(response.data);

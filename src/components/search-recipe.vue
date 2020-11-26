@@ -42,7 +42,7 @@ export default {
       const params = {
         name: this.nameRecipe
       };
-      axios.get('https://homemadeapi.azurewebsites.net/api/recipe', {params})
+      axios.get('https://homemade20201124161107.azurewebsites.net/api/recipe', {params})
           .then(response =>{
             this.recipes = response.data;
             console.log(response.data);
@@ -52,7 +52,7 @@ export default {
           })
     },
     search(){
-      axios.get('https://homemadeapi.azurewebsites.net/api/userchef')
+      axios.get('https://homemade20201124161107.azurewebsites.net/api/userchef')
           .then(response =>{
             this.recipes = response.data;
             console.log(response.data);
