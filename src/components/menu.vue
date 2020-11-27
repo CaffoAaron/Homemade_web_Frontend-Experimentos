@@ -52,7 +52,51 @@
             </v-col>
             <v-col cols="1"></v-col>
             <v-col cols="6">
-                
+                <v-container v-for="(Menu, i) in menu"
+                                :key="i">
+                    <v-row>
+                        <v-col cols="5" v-for="(recipe, i) in menuRecipes"
+                               :key="i">
+                            <v-card>
+                                <v-img v-bind:src="recipe.img"></v-img>
+                                <v-card-title>{{recipe.nameRecipe}}</v-card-title>
+                                <v-card-subtitle>{{recipe.instructions}}</v-card-subtitle>
+                                <v-card-actions>
+                                    <v-btn
+                                            icon
+                                            @click="show = !show"
+                                    >
+                                        <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+                                    </v-btn>
+                                </v-card-actions>
+                                <v-expand-transition>
+                                    <div v-show="show">
+                                        <v-divider></v-divider>
+                                        <v-card-actions>
+                                            <v-btn
+                                                        color="orange darken-2"
+                                                        text
+                                            >
+                                                <router-link to="/homechef/recipe">
+                                                    <span>
+                                                        Ver Receta
+                                                    </span>
+                                                </router-link>
+                                            </v-btn>
+                                            <v-btn
+                                                        color="red lighten-2"
+                                                        text
+                                                        @click="unassignRecipe(Menu.id, recipe.id)"
+                                                >
+                                                Eliminar de mi menu
+                                            </v-btn>
+                                        </v-card-actions>
+                                    </div>
+                                </v-expand-transition>
+                            </v-card>
+                        </v-col>
+                    </v-row>
+                </v-container>
             </v-col>
         </v-row>
     </v-container>
@@ -63,16 +107,41 @@
 
     export default {
         name: "menu",
+        computed: {
+            currentUser() {
+                console.log(this.$store.state.auth.user);
+                return this.$store.state.auth.user;
+            },
+        },
         data: () => ({
-
+            menu:[],
+            menuRecipes:[],
+            show:false,
         }),
         methods: {
-
+            reserve () {
+                this.loading = true
+                setTimeout(() => (this.loading = false), 2000)
+            },
+            unassignRecipe(menuId, recipeId) {
+                axios.delete('https://homemade20201124161107.azurewebsites.net/api/menurecipe/'+menuId+'/'+recipeId, {}).catch(e=> {
+                    this.errors.push(e);
+                });
+            }
         },
-        createed() {
-            axios.get('https://homemade20201124161107.azurewebsites.net/api/menu')
+        created() {
+            axios.get('https://homemade20201124161107.azurewebsites.net/api/menu/101')
                 .then(response =>{
-                    this.recipeSteps = response.data;
+                    this.menu = response.data;
+                    console.log('data: ');
+                    console.log(response.data);
+                })
+                .catch(e=>{
+                    this.errors.push(e);
+                })
+            axios.get('https://homemade20201124161107.azurewebsites.net/api/menurecipe/1')
+                .then(response =>{
+                    this.menuRecipes = response.data;
                     console.log('data: ');
                     console.log(response.data);
                 })

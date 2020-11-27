@@ -9,7 +9,7 @@
                             <h1>{{recipes[0].nameRecipe}}</h1>
                         </v-col>
                         <v-col cols="2">
-                            <v-btn color="green accent-2" @click="assignRecipe()">
+                            <v-btn color="green accent-2" @click="assignRecipe(1, 4)">
                                 <router-link to="/homechef/menu">
                                     <span>Agregar a mi Menu</span>
                                 </router-link>
@@ -150,8 +150,6 @@
             users: [],
             loading: false,
             selection: 1,
-            menuId: 1,
-            recipeId: 1,
             color1: 'green accent-2',
             color2: 'light-green accent-2',
             icon: 'mdi-book-variant',
