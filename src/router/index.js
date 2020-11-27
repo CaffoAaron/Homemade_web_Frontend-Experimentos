@@ -15,7 +15,7 @@ const routes = [
     component: () => import('../views/About.vue')
   },
   {
-    path: '/perfil/:id',
+    path: '/perfil',
     name: 'perfil-chef',
     component: () => import('../components/perfil-chef')
   },
@@ -23,6 +23,10 @@ const routes = [
     path: '/hoomechef/edit',
     name: 'edit-perfil',
     component: () => import('../components/edit-perfil')
+  },{
+    path: '/homechef/menu',
+    name: 'menu',
+    component: () => import('../components/menu')
   },
   {
     path: '/hoomechef/menbresia',
@@ -44,9 +48,19 @@ const routes = [
     component: () => import('../components/create-recipe')
   },
   {
-    path: '/homechef/receta',
-    name: 'recipe',
-    component:()=>import('../components/receta')
+    path: '/homechef/search-receta',
+    name: 'search-recipe',
+    component:()=>import('../components/search-recipe')
+  },
+  {
+    path: '/login',
+    name:'login-form',
+    component: () =>import('../components/login-form')
+  },
+  {
+    path: '/register',
+    name: 'register-form',
+    component: () =>import('../components/register-form')
   }
 ]
 

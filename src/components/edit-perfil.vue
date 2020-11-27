@@ -8,25 +8,21 @@
               <template slot="progress">
                 <v-progress-linear color="deep-purple" height="10" indeterminate></v-progress-linear>
               </template>
-              <v-img height="250"
-                     src="https://scontent.flim18-1.fna.fbcdn.net/v/t1.0-9/107697646_1063570910706020_6049356131090790239_o.jpg?_nc_cat=102&ccb=2&_nc_sid=09cbfe&_nc_eui2=AeElQJo0XMR59x1fWdDj4MHVhBRN2sNJSP2EFE3aw0lI_QgZw6_XxVcq_ynfVGuQcPxodxUpVNBNu-4VqBBAXEEW&_nc_ohc=i-oqCeMNN1oAX--4BkU&_nc_ht=scontent.flim18-1.fna&oh=d57aed443b5f97a858f228b8fbf3de64&oe=5FCEF49A"
-              ></v-img>
-              <div v-for="user in users" :key="user.name">
-                <v-card-title>{{user.name + ' ' + user.lastname}}</v-card-title>
-              </div>
-
+              <v-img height="250" v-bind:src="currentUser.picture">
+              </v-img>
+              <v-card-title>{{currentUser.name + ' ' + currentUser.lastname}}</v-card-title>
               <v-card-text>
                 <v-row align="center" class="mx-0">
                   <v-rating :value="4.5" color="amber" dense half-increments readonly size="14"></v-rating>
                   <div class="grey--text ml-4">
-                    4.5 (413)
+                    4.5 (4)
                   </div>
                 </v-row>
-                <div v-for="user in users" :key="user.name" class="my-4 subtitle-1">
-                  {{ 'Date: ' + user.date}}
+                <div>
+                  'Date: 2000-05-03T00:00:00'
                 </div>
-                <div v-for="user in users" :key="user.name" >
-                  {{ 'Email de contacto: ' + user.email}}
+                <div>
+                  {{ 'Email de contacto: ' + currentUser.email}}
                 </div>
               </v-card-text>
               <v-divider class="mx-4"></v-divider>
@@ -161,6 +157,20 @@ import axios from 'axios'
 
 export default {
   name: "edit-perfil",
+  computed: {
+    currentUser() {
+      console.log(this.$store.state.auth.user);
+      return this.$store.state.auth.user;
+    },
+    currentUserFullName() {
+      return `${this.currentUser.firstName} ${this.currentUser.lastName}`;
+    }
+  },
+  mounted() {
+    if (!this.currentUser) {
+      this.$router.push('/login');
+    }
+  },
   data: () => ({
     loading: false,
     selection: 1,
@@ -194,7 +204,7 @@ export default {
     ]
   }),
   created() {
-    axios.get('https://homemadeapi.azurewebsites.net/api/recipe')
+    axios.get('https://homemade20201124161107.azurewebsites.net/api/recipe')
         .then(response =>{
           this.recipes = response.data;
           console.log(response.data);
@@ -202,7 +212,7 @@ export default {
         .catch(e=>{
           this.errors.push(e);
         })
-    axios.get('https://homemadeapi.azurewebsites.net/api/userchef')
+    axios.get('https://homemade20201124161107.azurewebsites.net/api/userchef')
         .then(response =>{
           this.users = response.data;
           console.log(response.data);
@@ -236,7 +246,7 @@ export default {
         "gender": false,
         "certificate": ""
       };
-      axios.put('https://homemadeapi.azurewebsites.net/api/userchef/id?id=100', editPerfil).catch(e=>{
+      axios.put('https://homemade20201124161107.azurewebsites.net/api/userchef/id?id=100', editPerfil).catch(e=>{
         this.errors.push(e);
       });
     },
@@ -252,7 +262,7 @@ export default {
         "gender": false,
         "certificate": ""
       };
-      axios.put('https://homemadeapi.azurewebsites.net/api/userchef/id?id=100', editPerfil).catch(e=>{
+      axios.put('https://homemade20201124161107.azurewebsites.net/api/userchef/id?id=100', editPerfil).catch(e=>{
         this.errors.push(e);
       });
     },
@@ -268,7 +278,7 @@ export default {
         "gender": false,
         "certificate": ""
       };
-      axios.put('https://homemadeapi.azurewebsites.net/api/userchef/id?id=100', editPerfil).catch(e=>{
+      axios.put('https://homemade20201124161107.azurewebsites.net/api/userchef/id?id=100', editPerfil).catch(e=>{
         this.errors.push(e);
       });
     },

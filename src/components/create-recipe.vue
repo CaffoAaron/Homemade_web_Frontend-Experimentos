@@ -107,7 +107,7 @@
                     "nameRecipe": recipeName,
                     "instructions": "string",
                 };
-                axios.post('https://homemadeapi.azurewebsites.net/api/recipe/userchefid?userchefId=100', newRecipe).catch(e=> {
+                axios.post('https://homemade20201124161107.azurewebsites.net/api/recipe/userchefid?userchefId=100', newRecipe).catch(e=> {
                     this.errors.push(e);
                 });
             },
@@ -117,7 +117,7 @@
                     "name": ingredient,
                     "quantity": ingredientQuantity
                 };
-                axios.post('https://homemadeapi.azurewebsites.net/api/ingredient/3', newIngredient).catch(e=> {
+                axios.post('https://homemade20201124161107.azurewebsites.net/api/ingredient/3', newIngredient).catch(e=> {
                     this.errors.push(e);
                 });
             },
@@ -126,7 +126,7 @@
                 const newStep = {
                     "instructions": recipeStep,
                 };
-                axios.post('https://homemadeapi.azurewebsites.net/api/recipesteps/recipeid?recipeId=3', newStep).catch(e=> {
+                axios.post('https://homemade20201124161107.azurewebsites.net/api/recipesteps/recipeid?recipeId=3', newStep).catch(e=> {
                     this.errors.push(e);
                 });
             },
