@@ -30,21 +30,23 @@
 
         </v-btn>
 
-        <v-divider
-                class="mx-5"
-                vertical
-        ></v-divider>
+        <div v-if="currentUser">
+          <v-divider
+              class="mx-5"
+              vertical
+          ></v-divider>
 
-        <v-btn
-                depressed
-                rounded
-                target="_blank"
-                text>
-          <router-link to="/homechef/menu">
-            <span class="mr-2">Mi Menu</span>
-          </router-link>
+          <v-btn
+              depressed
+              rounded
+              target="_blank"
+              text>
+            <router-link to="/homechef/menu">
+              <span class="mr-2">Mi Menu</span>
+            </router-link>
 
-        </v-btn>
+          </v-btn>
+        </div>
 
         <div v-if="currentUser">
 
